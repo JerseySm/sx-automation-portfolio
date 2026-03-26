@@ -17,8 +17,7 @@ import requests
 # CONFIGURACIÓN
 # ──────────────────────────────────────────────
 
-BASE_URL = "http://dtv-prov.tbxapis.com/v1/subscriber/CO"
-TOKEN = "Q1kAKAPJezx6lhvJVT0omIAXhRfGgWwn"
+TOKEN = os.getenv("DTGO_TOKEN", "tu_token_aqui")
 
 ARCHIVO_ENTRADA = "cuentas.xlsx"
 ARCHIVO_SALIDA = "resultado_inactivacion.xlsx"
