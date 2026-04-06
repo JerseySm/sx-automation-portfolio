@@ -142,24 +142,24 @@ def exportar(op: pd.DataFrame, ult_tramite: pd.DataFrame, servicios: pd.DataFram
 # ──────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("\n🔄 Iniciando prevalidación de OP...\n")
+    print("\n Iniciando prevalidación de OP...\n")
 
-    print("📂 Cargando archivos...")
+    print(" Cargando archivos...")
     op = cargar_op(ARCHIVO_OP)
     ult_tramite, servicios, vs_his = cargar_cruzes(ARCHIVO_CRUZES)
 
-    print("\n🔗 Combinando OP con trámites...")
+    print("\n Combinando OP con trámites...")
     op = op.merge(ult_tramite[["SUB_ID", "TRAMITE_ULTIMO"]], how="left", on="SUB_ID")
 
-    print("\n✅ Ejecutando validaciones...")
+    print("\n Ejecutando validaciones...")
     op = validar_servicios(op, servicios)
     op = validar_tramite(op)
     op = validar_external(op, vs_his)
 
-    print("\n📊 Resumen de tipologías:")
+    print("\n Resumen de tipologías:")
     print(op["TIPOLOGIA"].value_counts().to_string())
 
-    print("\n💾 Exportando resultados...")
+    print("\n Exportando resultados...")
     exportar(op, ult_tramite, servicios, ARCHIVO_SALIDA)
 
-    print("\n✅ Proceso completado exitosamente.\n")
+    print("\n Proceso completado exitosamente.\n")
