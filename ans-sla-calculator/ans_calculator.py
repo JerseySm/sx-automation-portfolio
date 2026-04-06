@@ -120,20 +120,20 @@ def calcular_ans(df: pd.DataFrame) -> pd.DataFrame:
 # ──────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("\n🔄 Iniciando cálculo de ANS...\n")
+    print("\n Iniciando cálculo de ANS...\n")
 
     df_original = pd.read_excel(ARCHIVO_ENTRADA)
     df = df_original.copy()
 
-    print("📅 Reconstruyendo fechas...")
+    print(" Reconstruyendo fechas...")
     df = reconstruir_fechas(df)
 
-    print("⏱️  Calculando cumplimiento de ANS...")
+    print("  Calculando cumplimiento de ANS...")
     df = calcular_ans(df)
 
     cumple = (df["Cumple"] == "SI").sum()
     no_cumple = (df["Cumple"] == "NO").sum()
-    print(f"\n📊 Resumen:")
+    print(f"\n Resumen:")
     print(f"   Cumple ANS ({ANS_HORAS}h): {cumple}")
     print(f"   No cumple:              {no_cumple}")
     print(f"   Total:                  {len(df)}")
@@ -142,5 +142,5 @@ if __name__ == "__main__":
         df_original.to_excel(writer, sheet_name="Original", index=False)
         df.to_excel(writer, sheet_name="Corregido", index=False)
 
-    print(f"\n💾 Resultado guardado: {ARCHIVO_SALIDA}")
-    print("\n✅ Proceso completado.\n")
+    print(f"\n Resultado guardado: {ARCHIVO_SALIDA}")
+    print("\n Proceso completado.\n")
