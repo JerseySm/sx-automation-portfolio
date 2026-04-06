@@ -93,22 +93,22 @@ def procesar_cuenta(row: pd.Series) -> dict:
 
 
 def ejecutar(archivo_entrada: str, archivo_salida: str):
-    print("\n🔄 Iniciando desactivación masiva NPI DirecTVGO...\n")
+    print("\n Iniciando desactivación masiva NPI DirecTVGO...\n")
 
     df = pd.read_excel(archivo_entrada)
     df.columns = df.columns.str.strip().str.lower()
 
-    print(f"📂 Cuentas a procesar: {len(df)}\n")
+    print(f" Cuentas a procesar: {len(df)}\n")
 
     resultados = df.apply(procesar_cuenta, axis=1, result_type="expand")
     df = pd.concat([df, resultados], axis=1)
 
     df.to_excel(archivo_salida, index=False)
 
-    print("📊 Resumen:")
+    print(" Resumen:")
     print(df["resultado"].value_counts().to_string())
-    print(f"\n💾 Resultado guardado en: {archivo_salida}")
-    print("\n✅ Proceso completado.\n")
+    print(f"\n Resultado guardado en: {archivo_salida}")
+    print("\n Proceso completado.\n")
 
 
 # ──────────────────────────────────────────────
